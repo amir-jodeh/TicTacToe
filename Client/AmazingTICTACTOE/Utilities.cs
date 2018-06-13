@@ -11,7 +11,7 @@ namespace AmazingTICTACTOE
 {
     class Utilities
     {
-        public static void Blink(Clientdata CD)
+        public static void Blink(ClientData CD)
         {
             Random rand = CD.Random;
             CD.Label.ForeColor = Color.FromArgb(rand.Next(0, 255), rand.Next(0, 255), rand.Next(0, 255), rand.Next(0, 255));

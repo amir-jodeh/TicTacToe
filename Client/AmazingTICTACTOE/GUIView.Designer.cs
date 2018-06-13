@@ -49,6 +49,9 @@
             this.b3 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.firstplayer = new System.Windows.Forms.Label();
+            this.secondplayer = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
@@ -192,7 +195,7 @@
             this.XWin.BackColor = System.Drawing.Color.Transparent;
             this.XWin.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.XWin.ForeColor = System.Drawing.Color.Red;
-            this.XWin.Location = new System.Drawing.Point(602, 12);
+            this.XWin.Location = new System.Drawing.Point(602, 39);
             this.XWin.Name = "XWin";
             this.XWin.Size = new System.Drawing.Size(115, 30);
             this.XWin.TabIndex = 12;
@@ -203,7 +206,7 @@
             this.OWin.BackColor = System.Drawing.Color.Transparent;
             this.OWin.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.OWin.ForeColor = System.Drawing.Color.Blue;
-            this.OWin.Location = new System.Drawing.Point(602, 58);
+            this.OWin.Location = new System.Drawing.Point(602, 102);
             this.OWin.Name = "OWin";
             this.OWin.Size = new System.Drawing.Size(115, 30);
             this.OWin.TabIndex = 13;
@@ -214,7 +217,7 @@
             this.Draws.BackColor = System.Drawing.Color.Transparent;
             this.Draws.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Draws.ForeColor = System.Drawing.Color.White;
-            this.Draws.Location = new System.Drawing.Point(602, 107);
+            this.Draws.Location = new System.Drawing.Point(602, 151);
             this.Draws.Name = "Draws";
             this.Draws.Size = new System.Drawing.Size(115, 30);
             this.Draws.TabIndex = 14;
@@ -229,7 +232,6 @@
             this.label1.Size = new System.Drawing.Size(173, 45);
             this.label1.TabIndex = 15;
             this.label1.Text = "Made by AJ";
-            this.label1.Click += new System.EventHandler(this.madeby);
             // 
             // timer1
             // 
@@ -266,13 +268,46 @@
             this.pictureBox2.TabIndex = 17;
             this.pictureBox2.TabStop = false;
             // 
-            // frm_ttt
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(75, 451);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 18;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // firstplayer
+            // 
+            this.firstplayer.BackColor = System.Drawing.Color.Transparent;
+            this.firstplayer.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.firstplayer.ForeColor = System.Drawing.Color.White;
+            this.firstplayer.Location = new System.Drawing.Point(602, 9);
+            this.firstplayer.Name = "firstplayer";
+            this.firstplayer.Size = new System.Drawing.Size(115, 30);
+            this.firstplayer.TabIndex = 19;
+            this.firstplayer.Text = "Player1";
+            // 
+            // secondplayer
+            // 
+            this.secondplayer.BackColor = System.Drawing.Color.Transparent;
+            this.secondplayer.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.secondplayer.ForeColor = System.Drawing.Color.White;
+            this.secondplayer.Location = new System.Drawing.Point(603, 75);
+            this.secondplayer.Name = "secondplayer";
+            this.secondplayer.Size = new System.Drawing.Size(115, 30);
+            this.secondplayer.TabIndex = 20;
+            this.secondplayer.Text = "Player2";
+            // 
+            // GUIView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(777, 428);
+            this.ClientSize = new System.Drawing.Size(777, 541);
+            this.Controls.Add(this.secondplayer);
+            this.Controls.Add(this.firstplayer);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.Draws);
@@ -300,9 +335,11 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AJ\'s CO-OP Tic Tac Toe Game";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.GUIView_Paint);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -327,6 +364,9 @@
         public System.Windows.Forms.Timer timer1;
         public System.Windows.Forms.PictureBox pictureBox1;
         public System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.TextBox textBox1;
+        public System.Windows.Forms.Label firstplayer;
+        public System.Windows.Forms.Label secondplayer;
     }
 }
 

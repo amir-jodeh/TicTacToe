@@ -15,11 +15,18 @@ namespace AmazingTICTACTOE
     {
         public Model model;
         Random rand = new Random();
+        Color color = Color.Snow;
         public int player = 2;
         public int turns = 0;
         public int xwin = 0;
         public int owin = 0;
+        public string player1 = "X ";
+        public string player2 = "O ";
+        Color x_colour = Color.Red;
+        Color o_colour = Color.Blue;
         public int draws = 0;
+        private Graphics g;
+        // use private
 
         public GUIView()
         {
@@ -27,30 +34,31 @@ namespace AmazingTICTACTOE
             model = new Model(this);
         }
 
-        public class Clientdata
+        public class ClientData
         {
             public Timer Timer { get; set; }
             public Random Random { get; set; }
             public Label Label { get; set; }
         }
         
-        public Clientdata CD;
+        public ClientData CD;
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            CD = new Clientdata
+            CD = new ClientData
             {
                 Timer = timer1,
                 Random = rand,
                 Label = label1
             };
             MessageBox.Show("Welcome to AJ's Amazing Creation of work");
-            XWin.Text = "X: " + xwin;
-            OWin.Text = "O: " + owin;
+            XWin.Text = player1 + xwin;
+            OWin.Text = player2 + owin;
             Draws.Text = "Draws: " + draws;
             timer1.Interval = 300;
             timer1.Start();
         }
+
 
         //Playboard buttons
         public void buttonClick(object sender, EventArgs e)
@@ -58,17 +66,19 @@ namespace AmazingTICTACTOE
             Button button = (Button)sender;
             if (button.Text=="")
             {
+                
                 if (player % 2 == 0)
                 {
-                    button.ForeColor = Color.Red;
-                    button.Text = "X";
+                    //change to int
+                    button.ForeColor = x_colour;
+                    button.Text = player1;
                     player++;
                     turns++;
                 }
                 else
                 {
-                    button.ForeColor = Color.Blue;
-                    button.Text = "0";
+                    button.ForeColor = o_colour;
+                    button.Text = player2;
                     player++;
                     turns++;
                 }
@@ -81,15 +91,15 @@ namespace AmazingTICTACTOE
 
                 if (model.CheckWinner()==true)
                 {
-                    if (button.Text == "X")
+                    if (button.Text == player1)
                     {
-                        MessageBox.Show("X Won!", "Winner Winner!");
+                        MessageBox.Show(player1 + "Won!", "Winner Winner!");
                         xwin++;
                         model.NewGame();
                     }
                     else
                     {
-                        MessageBox.Show("O Won!", "Winner Winner!");
+                        MessageBox.Show(player2 + "Won!", "Winner Winner!");
                         owin++;
                         model.NewGame();
                     }
@@ -117,14 +127,38 @@ namespace AmazingTICTACTOE
             MessageBox.Show("Progress Reset");
         }
 
-        private void madeby(object sender, EventArgs e)
-        {
-        }
-
         private void timer1_Tick(object sender, EventArgs e)
         {
             Utilities.Blink(CD);
         }
+
+        private void GUIView_Paint(object sender, PaintEventArgs e)
+        {
+            g = e.Graphics;
+            //g.DrawString(new Pen(new SolidBrush(Color.Red)), 0 ,0, 34, 34);
+            g.DrawString("Creator:", new Font("Arial", 16), new SolidBrush(Color.Snow), Width * 0.75f, Height * 0.75f);
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+            if (true)
+            {
+
+            }
+
+            if (textBox1.Text.Substring(0) == " ")
+            {
+                //MessageBox.Show("Invalid Text Length");
+                textBox1.Text = "Player1";
+            }
+
+            else
+            {
+                firstplayer.Text = textBox1.Text;
+            }
+        }
+
 
     }
 }
