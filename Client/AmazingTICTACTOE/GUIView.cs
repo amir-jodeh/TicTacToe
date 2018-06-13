@@ -16,6 +16,7 @@ namespace AmazingTICTACTOE
         public Model model;
         Random rand = new Random();
         Color color = Color.Snow;
+
         public int player = 2;
         public int turns = 0;
         public int xwin = 0;
